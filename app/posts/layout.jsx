@@ -1,8 +1,5 @@
 import Link from "next/link";
-import { use } from "react";
-
 import styles from './page.module.css'
-
 
 async function getPosts() {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
@@ -10,8 +7,8 @@ async function getPosts() {
   return post;
 }
 
-export default function PostsLayout({ children }) {
-  const posts = use(getPosts());
+export default async function PostsLayout({ children }) {
+  const posts = await getPosts();
   return (
     <div className={styles.grid}>
       <aside className={styles.posts}>
